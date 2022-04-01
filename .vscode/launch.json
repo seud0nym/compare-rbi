@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Test<tch-version-compare_828c5f63>",
+            "request": "launch",
+            "mainClass": "main.Test",
+            "projectName": "tch-version-compare_828c5f63"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<tch-version-compare_828c5f63>",
+            "request": "launch",
+            "mainClass": "seud0nym.tch_version_compare.Main",
+            "projectName": "tch-version-compare_828c5f63",
+            "args": [ "D:\\Temp\\firmware\\vbnt-v_20.3.c.0329-MR19-RB", "D:\\Temp\\firmware\\vbnt-v_20.3.c.0389-MR20-RA" ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "lib/Decrypt_RBI_Firmware_Utility.jar"
+        ]
+    }
+}
