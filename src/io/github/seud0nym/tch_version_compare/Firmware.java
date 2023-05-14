@@ -38,7 +38,7 @@ public class Firmware {
 					+ " is not a directory. You must specify the top-level directory of the converted firmware file");
 		}
 
-		Pattern boardPattern = Pattern.compile("(V[B|C]NT-.)", Pattern.CASE_INSENSITIVE);
+		Pattern boardPattern = Pattern.compile("(V.NT-.)", Pattern.CASE_INSENSITIVE);
 		Matcher boardMatcher = boardPattern.matcher(basePath);
 		String boardPrefix = null;
 		if (boardMatcher.find()) {
@@ -199,13 +199,19 @@ public class Firmware {
 			if (prevAttr == null) {
 				System.out.printf("+ ADDED   Unpackaged File %s\n", name);
 			} else {
-				String crntDigest = crntAttr.getDigest();
-				if (crntDigest == null) {
-					System.err.println("DIGEST is NULL for " + name);
+				if (crntAttr.isSymbolicLink() && prevAttr.isSymbolicLink()) {
+					if (!crntAttr.getTarget().equals(prevAttr.getTarget())) {
+						System.out.printf("~ CHANGED Unpackaged Symbolic Link %s\n", name);
+					}
 				} else {
-					String prevDigest = prevAttr.getDigest();
-					if (!crntDigest.equals(prevDigest)) {
-						System.out.printf("~ CHANGED Unpackaged File %s\n", name);
+					String crntDigest = crntAttr.getDigest();
+					if (crntDigest == null) {
+						System.err.println("DIGEST is NULL for " + name);
+					} else {
+						String prevDigest = prevAttr.getDigest();
+						if (!crntDigest.equals(prevDigest)) {
+							System.out.printf("~ CHANGED Unpackaged File %s\n", name);
+						}
 					}
 				}
 			}
